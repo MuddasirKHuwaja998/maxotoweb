@@ -7,6 +7,9 @@ export default defineConfig({
     react(),
     tsconfigPaths()
   ],
+  ssr: {
+    noExternal: ['@tanstack/start']
+  },
   preview: {
     allowedHosts: ['maxoto-q8qb.onrender.com']
   }
