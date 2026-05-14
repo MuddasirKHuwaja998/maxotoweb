@@ -145,16 +145,18 @@ export function Hero() {
         transition={{ duration: 1.2, delay: 1.5, ease }}
         className="container-x relative mt-14 lg:mt-20"
       >
-        <div className="grid grid-cols-2 gap-6 sm:gap-12 border-t border-[var(--line)] pt-8 max-w-2xl mx-auto sm:mx-0">
-          {[
-            ["9M+", "Italiani con ipoacusia"],
-            ["2 Anni", "Garanzia inclusa"],
-          ].map(([n, l]) => (
-            <div key={l} className="flex flex-col items-center text-center sm:items-start sm:text-left">
-              <div className="font-serif text-2xl sm:text-3xl lg:text-4xl text-ink leading-none">{n}</div>
-              <div className="text-[10px] sm:text-[11px] tracking-[0.22em] uppercase text-ink-mute mt-2 sm:mt-3">{l}</div>
-            </div>
-          ))}
+        <div className="lg:grid lg:grid-cols-12">
+          <div className="lg:col-start-7 lg:col-span-6 grid grid-cols-2 gap-6 sm:gap-12 border-t border-[var(--line)] pt-8 max-w-md mx-auto lg:mx-0 lg:ml-auto">
+            {[
+              ["9M+", "Italiani con ipoacusia"],
+              ["2 Anni", "Garanzia inclusa"],
+            ].map(([n, l]) => (
+              <div key={l} className="flex flex-col items-center text-center sm:items-start sm:text-left lg:items-end lg:text-right">
+                <div className="font-serif text-2xl sm:text-3xl lg:text-4xl text-ink leading-none">{n}</div>
+                <div className="text-[10px] sm:text-[11px] tracking-[0.22em] uppercase text-ink-mute mt-2 sm:mt-3">{l}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </motion.div>
 
