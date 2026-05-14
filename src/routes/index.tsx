@@ -9,6 +9,7 @@ import { Pricing } from "@/components/site/Pricing";
 import { Partner } from "@/components/site/Partner";
 import { Contact } from "@/components/site/Contact";
 import { Footer } from "@/components/site/Footer";
+import { WaveSeparator } from "@/components/site/WaveSeparator";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -43,11 +44,17 @@ function Index() {
       <Preloader />
       <SiteNav />
       <Hero />
+      <WaveSeparator />
       <About />
+      <WaveSeparator />
       <Products />
-      <QuoteBand />
-      <Pricing />
+      <WaveSeparator />
       <Partner />
+      <WaveSeparator />
+      <QuoteBand />
+      <WaveSeparator />
+      <Pricing />
+      <WaveSeparator />
       <Contact />
       <Footer />
     </main>
