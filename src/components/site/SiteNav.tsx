@@ -3,7 +3,7 @@ import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "@/assets/max/logo.png";
 import { TestModal } from "./TestModal";
-import { ProductModal, AMPLIFICATORI_MODAL } from "./ProductModal";
+import { ProductModal } from "./ProductModal";
 
 const links = [
   { href: "#about", label: "Chi Siamo" },
@@ -70,11 +70,11 @@ export function SiteNav() {
                     {l.label}
                     <span className="text-[9px] opacity-70">▾</span>
                   </a>
-                  <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
-                    <div className="min-w-[240px] rounded-2xl bg-[rgba(26,29,34,0.96)] backdrop-blur-xl border border-white/10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] p-2">
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full pt-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 translate-y-1 transition-all duration-300 z-50">
+                    <div className="min-w-[260px] rounded-2xl bg-[rgba(26,29,34,0.97)] backdrop-blur-xl border border-gold/20 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] p-2">
                       <button
                         onClick={() => setProductModalOpen(true)}
-                        className="w-full text-left px-4 py-3 rounded-xl text-white/85 hover:text-white hover:bg-white/5 transition font-serif text-base"
+                        className="w-full text-left px-4 py-3 rounded-xl text-white/90 hover:text-white bg-transparent hover:bg-gradient-to-r hover:from-gold-deep hover:to-gold transition-all duration-300 font-serif text-base tracking-wide"
                       >
                         Amplificatori Acustici
                       </button>
@@ -154,7 +154,7 @@ export function SiteNav() {
 
       <TestModal open={testOpen} onClose={() => setTestOpen(false)} />
       <ProductModal
-        product={productModalOpen ? AMPLIFICATORI_MODAL : null}
+        open={productModalOpen}
         onClose={() => setProductModalOpen(false)}
       />
     </>
