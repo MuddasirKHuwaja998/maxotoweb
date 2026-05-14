@@ -1,6 +1,5 @@
 import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import { useRef, type ReactNode } from "react";
-import aiSense from "@/assets/max/ai-sense.png";
 import cic from "@/assets/max/cic.png";
 import ric from "@/assets/max/ric.png";
 
@@ -14,17 +13,6 @@ type Product = {
   note?: string;
 };
 
-const apparecchi: Product[] = [
-  {
-    category: "Apparecchio Acustico · Dispositivo Medico",
-    badge: "CE 0051",
-    name: "M.A.X.OTO AI-Sense",
-    poster: aiSense,
-    video:
-      "https://dl.dropboxusercontent.com/scl/fi/m3pp5mnm593uddjmunbau/Maxoto-AI-Sense.mp4?rlkey=e5kifif7yqn46abrps1triu7t&raw=1",
-    points: ["Tecnologia digitale avanzata", "Garanzia 2 anni inclusa"],
-  },
-];
 
 const amplificatori: Product[] = [
   {
@@ -61,9 +49,6 @@ function ProductStoryCard({ p, index }: { p: Product; index: number }) {
       {/* Header: name + category */}
       <div className="mb-8 flex items-start justify-between gap-6">
         <div>
-          <div className="text-[11px] tracking-[0.3em] uppercase text-gold-deep mb-3 font-medium">
-            — Modello 0{index + 1}
-          </div>
           <h3 className="font-serif text-4xl md:text-5xl text-ink leading-[1.02] tracking-tight">
             {p.name}
           </h3>
