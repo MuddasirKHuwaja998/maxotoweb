@@ -76,7 +76,7 @@ export function SiteNav() {
                         onClick={() => setProductModalOpen(true)}
                         className="w-full text-left px-4 py-3 rounded-xl text-white/90 hover:text-white bg-transparent hover:bg-gradient-to-r hover:from-gold-deep hover:to-gold transition-all duration-300 font-serif text-base tracking-wide"
                       >
-                        Amplificatori Acustici
+                        Apparecchi Acustici.
                       </button>
                     </div>
                   </div>
