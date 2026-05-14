@@ -1,5 +1,5 @@
 import { motion, type Variants } from "framer-motion";
-import riempitiva from "@/assets/foto-riempitiva.png";
+import riempitiva from "@/assets/foto-riempitiva-2.png";
 
 const fade: Variants = {
   hidden: { y: 40, opacity: 0 },
