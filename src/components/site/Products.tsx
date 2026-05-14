@@ -1,6 +1,5 @@
 import { motion, useScroll, useTransform, type Variants } from "framer-motion";
 import { useRef, type ReactNode } from "react";
-import aiSense from "@/assets/max/ai-sense.png";
 import cic from "@/assets/max/cic.png";
 import ric from "@/assets/max/ric.png";
 
@@ -14,17 +13,6 @@ type Product = {
   note?: string;
 };
 
-const apparecchi: Product[] = [
-  {
-    category: "Apparecchio Acustico · Dispositivo Medico",
-    badge: "CE 0051",
-    name: "M.A.X.OTO AI-Sense",
-    poster: aiSense,
-    video:
-      "https://dl.dropboxusercontent.com/scl/fi/m3pp5mnm593uddjmunbau/Maxoto-AI-Sense.mp4?rlkey=e5kifif7yqn46abrps1triu7t&raw=1",
-    points: ["Tecnologia digitale avanzata", "Garanzia 2 anni inclusa"],
-  },
-];
 
 const amplificatori: Product[] = [
   {
@@ -61,9 +49,6 @@ function ProductStoryCard({ p, index }: { p: Product; index: number }) {
       {/* Header: name + category */}
       <div className="mb-8 flex items-start justify-between gap-6">
         <div>
-          <div className="text-[11px] tracking-[0.3em] uppercase text-gold-deep mb-3 font-medium">
-            — Modello 0{index + 1}
-          </div>
           <h3 className="font-serif text-4xl md:text-5xl text-ink leading-[1.02] tracking-tight">
             {p.name}
           </h3>
@@ -256,70 +241,6 @@ export function Products() {
               <ProductStoryCard key={p.name} p={p} index={i} />
             ))}
           </div>
-        </motion.div>
-      </div>
-
-      {/* Chapter divider */}
-      <div className="container-x">
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-[var(--line)] to-transparent" />
-      </div>
-
-      {/* CHAPTER II — Apparecchi Acustici (Medical) */}
-      <div className="relative pt-20 lg:pt-28 pb-20 lg:pb-28">
-        <ChapterTitle
-          number="II"
-          eyebrow="Dispositivi Medici · CE 0051"
-          title="Apparecchi"
-          emphasis="Acustici."
-        />
-
-        <motion.div
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-10%" }}
-          variants={{ show: { transition: { staggerChildren: 0.2 } } }}
-          className="container-x"
-        >
-          <div className="grid lg:grid-cols-12 gap-12 lg:gap-20 items-center">
-            <div className="lg:col-span-7">
-              <ProductStoryCard p={apparecchi[0]} index={0} />
-            </div>
-            <motion.aside
-              variants={fadeUp}
-              className="lg:col-span-5 self-center"
-            >
-              <div className="text-[11px] tracking-[0.28em] uppercase text-gold-deep mb-5 font-bold">
-                — Apparecchi Prescritti
-              </div>
-              <h3 className="font-serif text-3xl lg:text-4xl text-ink leading-tight mb-6">
-                Protesi acustiche digitali, <em>su misura.</em>
-              </h3>
-              <p className="lead">
-                <strong className="text-ink font-semibold">Prescritte e adattate</strong> da audioprotesisti qualificati. Compensano l'udito con elaborazione digitale, riduzione del rumore e direzionalità adattiva — sono <em>dispositivi medici</em> regolamentati.
-              </p>
-              <ul className="mt-8 space-y-3">
-                {[
-                  "Calibrazione personalizzata su audiogramma",
-                  "Riduzione attiva del rumore ambientale",
-                  "Assistenza post-vendita inclusa",
-                ].map((t) => (
-                  <li key={t} className="flex items-start gap-3 text-[15px] text-ink-soft">
-                    <span className="mt-[10px] w-4 h-px bg-gold-deep/70 shrink-0" />
-                    <span>{t}</span>
-                  </li>
-                ))}
-              </ul>
-            </motion.aside>
-          </div>
-
-          <motion.p
-            variants={fadeUp}
-            className="text-xs text-ink-mute mt-16 max-w-3xl italic leading-relaxed mx-auto text-center"
-          >
-            Il dispositivo non è progettato per il trattamento, la compensazione o la riabilitazione di patologie
-            dell'apparato uditivo. Non sostituisce in alcun modo la protesi acustica, la cui prescrizione e adattamento
-            sono di esclusiva competenza medica e audioprotesica.
-          </motion.p>
         </motion.div>
       </div>
     </section>

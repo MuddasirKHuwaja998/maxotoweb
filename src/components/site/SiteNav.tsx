@@ -3,10 +3,11 @@ import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "@/assets/max/logo.png";
 import { TestModal } from "./TestModal";
+import { ProductModal, AMPLIFICATORI_MODAL } from "./ProductModal";
 
 const links = [
   { href: "#about", label: "Chi Siamo" },
-  { href: "#products", label: "Prodotti" },
+  { href: "#products", label: "Prodotti", dropdown: true },
   { href: "#pricing", label: "Prezzi" },
   { href: "#partner", label: "Diventa Partner" },
   { href: "#contact", label: "Contatti" },
@@ -17,6 +18,7 @@ export function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [testOpen, setTestOpen] = useState(false);
+  const [productModalOpen, setProductModalOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 30);
@@ -58,15 +60,37 @@ export function SiteNav() {
           </div>
 
           <nav className="hidden lg:flex items-center gap-6 whitespace-nowrap">
-            {links.map((l) => (
-              <a
-                key={l.href}
-                href={l.href}
-                className="nav-link text-[12px] tracking-[0.24em] uppercase font-bold text-white/85 hover:text-white transition-colors duration-500"
-              >
-                {l.label}
-              </a>
-            ))}
+            {links.map((l) =>
+              l.dropdown ? (
+                <div key={l.href} className="relative group">
+                  <a
+                    href={l.href}
+                    className="nav-link text-[12px] tracking-[0.24em] uppercase font-bold text-white/85 hover:text-white transition-colors duration-500 inline-flex items-center gap-1.5"
+                  >
+                    {l.label}
+                    <span className="text-[9px] opacity-70">▾</span>
+                  </a>
+                  <div className="absolute left-1/2 -translate-x-1/2 top-full pt-3 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 z-50">
+                    <div className="min-w-[240px] rounded-2xl bg-[rgba(26,29,34,0.96)] backdrop-blur-xl border border-white/10 shadow-[0_30px_80px_-20px_rgba(0,0,0,0.7)] p-2">
+                      <button
+                        onClick={() => setProductModalOpen(true)}
+                        className="w-full text-left px-4 py-3 rounded-xl text-white/85 hover:text-white hover:bg-white/5 transition font-serif text-base"
+                      >
+                        Amplificatori Acustici
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ) : (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  className="nav-link text-[12px] tracking-[0.24em] uppercase font-bold text-white/85 hover:text-white transition-colors duration-500"
+                >
+                  {l.label}
+                </a>
+              )
+            )}
           </nav>
 
           <div className="flex items-center gap-4">
@@ -129,6 +153,10 @@ export function SiteNav() {
       </AnimatePresence>
 
       <TestModal open={testOpen} onClose={() => setTestOpen(false)} />
+      <ProductModal
+        product={productModalOpen ? AMPLIFICATORI_MODAL : null}
+        onClose={() => setProductModalOpen(false)}
+      />
     </>
   );
 }
