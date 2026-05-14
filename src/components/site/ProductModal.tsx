@@ -74,20 +74,21 @@ export function ProductModal({
             animate={{ y: 0, opacity: 1, scale: 1 }}
             exit={{ y: 20, opacity: 0, scale: 0.96 }}
             transition={{ duration: 0.55, ease }}
-            className="relative w-full max-w-3xl bg-paper rounded-3xl shadow-[0_60px_120px_-40px_rgba(0,0,0,0.55)] border border-[var(--line)] overflow-hidden max-h-[92vh] overflow-y-auto"
+            className="relative w-full max-w-5xl rounded-3xl shadow-[0_60px_120px_-40px_rgba(0,0,0,0.55)] border border-gold/30 overflow-hidden max-h-[94vh] overflow-y-auto bg-gradient-to-br from-[#fbf5e7] via-[#f5ecd6] to-[#ecdfbe]"
           >
-            <div className="absolute -top-32 -right-32 w-80 h-80 rounded-full bg-gold/25 blur-3xl pointer-events-none" />
-            <div className="absolute -bottom-32 -left-32 w-80 h-80 rounded-full bg-gold/15 blur-3xl pointer-events-none" />
+            <div className="absolute -top-40 -right-40 w-[28rem] h-[28rem] rounded-full bg-gold/40 blur-3xl pointer-events-none" />
+            <div className="absolute -bottom-40 -left-40 w-[28rem] h-[28rem] rounded-full bg-gold/30 blur-3xl pointer-events-none" />
+            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_rgba(255,255,255,0.55),_transparent_60%)] pointer-events-none" />
 
             <button
               onClick={onClose}
               aria-label="Chiudi"
-              className="absolute top-4 right-4 z-10 w-10 h-10 rounded-full border border-[var(--line)] bg-white/90 hover:bg-white text-ink-mute hover:text-ink transition flex items-center justify-center shadow-sm"
+              className="absolute top-5 right-5 z-20 w-10 h-10 rounded-full border border-gold/40 bg-white/95 hover:bg-white text-ink-mute hover:text-ink transition flex items-center justify-center shadow-md"
             >
               ✕
             </button>
 
-            <div className="relative px-5 sm:px-10 pt-10 sm:pt-12 pb-2 text-center">
+            <div className="relative px-5 sm:px-10 pt-12 sm:pt-14 pb-2 text-center">
               <div className="eyebrow mb-5 justify-center">Apparecchiature Acustiche</div>
               <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl text-ink leading-[1.05] tracking-tight">
                 M.A.X.OTO
@@ -99,18 +100,20 @@ export function ProductModal({
               </p>
             </div>
 
-            <div className="relative px-5 sm:px-10 py-8 sm:py-10">
-              <div className="grid sm:grid-cols-2 gap-8 sm:gap-10 items-start">
-                {products.map((p, i) => (
-                  <motion.article
-                    key={p.name}
+            <div className="relative px-5 sm:px-10 lg:px-14 py-10 sm:py-12">
+              {products.map((p) => (
+                <div
+                  key={p.name}
+                  className="grid lg:grid-cols-12 gap-10 lg:gap-14 items-center"
+                >
+                  {/* LEFT — large clean video */}
+                  <motion.div
                     initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, ease, delay: 0.1 + i * 0.12 }}
-                    className="group"
+                    transition={{ duration: 0.8, ease, delay: 0.1 }}
+                    className="lg:col-span-7"
                   >
-                    <div className="relative w-full rounded-[1.5rem] overflow-hidden bg-gradient-to-b from-[#f5f1e8] via-[#efe7d4] to-[#e6dcc4] aspect-[4/5] shadow-[0_30px_60px_-30px_rgba(58,64,73,0.35)]">
-                      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,0.45),_transparent_60%)]" />
+                    <div className="relative w-full rounded-[2rem] overflow-hidden bg-gradient-to-b from-white/70 via-[#f7eed7] to-[#ecdfbe] aspect-[4/3] shadow-[0_40px_80px_-30px_rgba(58,64,73,0.45)] border border-gold/25">
                       <video
                         autoPlay
                         muted
@@ -118,62 +121,51 @@ export function ProductModal({
                         playsInline
                         preload="metadata"
                         poster={p.poster}
-                        className="absolute inset-0 w-full h-full object-cover transition-transform duration-[2s] ease-out group-hover:scale-[1.04]"
+                        className="absolute inset-0 w-full h-full object-cover"
                       >
                         <source src={p.video} type="video/mp4" />
                       </video>
-                      {p.model && (
-                        <div className="absolute top-4 left-4 font-serif italic text-white/95 text-[11px] tracking-[0.3em] uppercase">
-                          {p.model}
-                        </div>
-                      )}
-                      {p.ce && (
-                        <div className="absolute top-4 right-4 px-2.5 py-1 rounded-full bg-white/85 backdrop-blur text-[10px] tracking-[0.22em] uppercase text-ink font-semibold">
-                          {p.ce}
-                        </div>
-                      )}
-                      <div className="absolute bottom-4 right-4 waveform" aria-hidden>
-                        {[0, 1, 2, 3].map((j) => (
-                          <span key={j} style={{ animationDelay: `${j * 0.18}s` }} />
-                        ))}
-                      </div>
                     </div>
-                  </motion.article>
-                ))}
+                  </motion.div>
 
-                {products.map((p) => (
+                  {/* RIGHT — info */}
                   <motion.div
-                    key={`${p.name}-info`}
                     initial={{ opacity: 0, y: 24 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.7, ease, delay: 0.25 }}
-                    className="flex flex-col"
+                    transition={{ duration: 0.8, ease, delay: 0.22 }}
+                    className="lg:col-span-5"
                   >
-                    <h3 className="font-serif text-2xl sm:text-3xl text-ink leading-tight tracking-tight">
-                      {p.name}
-                    </h3>
                     {p.model && (
-                      <div className="mt-2 text-[11px] tracking-[0.28em] uppercase text-gold-deep font-semibold">
+                      <div className="text-[11px] tracking-[0.32em] uppercase text-gold-deep font-semibold mb-3">
                         {p.model}
                       </div>
                     )}
-                    <div className="mt-1 text-[11px] tracking-[0.22em] uppercase text-ink-mute">
+                    <h3 className="font-serif text-3xl sm:text-4xl text-ink leading-tight tracking-tight">
+                      {p.name}
+                    </h3>
+                    <div className="mt-3 text-[11px] tracking-[0.22em] uppercase text-ink-mute">
                       {p.category}
                     </div>
-                    <ul className="mt-6 space-y-3">
+                    {p.ce && (
+                      <div className="inline-flex mt-5 items-center gap-2 px-3 py-1.5 rounded-full border border-gold/40 bg-white/70 backdrop-blur text-[10px] tracking-[0.28em] uppercase text-ink font-semibold">
+                        <span className="w-1.5 h-1.5 rounded-full bg-gold-deep" />
+                        {p.ce}
+                      </div>
+                    )}
+                    <ul className="mt-7 space-y-3.5">
                       {p.points.map((pt) => (
                         <li
                           key={pt}
-                          className="flex items-start gap-3 text-[14px] text-ink-soft"
+                          className="flex items-start gap-3 text-[15px] text-ink-soft"
                         >
-                          <span className="mt-[9px] w-4 h-px bg-gold-deep/70 shrink-0" />
+                          <span className="mt-[10px] w-4 h-px bg-gold-deep/70 shrink-0" />
                           <span>{pt}</span>
                         </li>
                       ))}
                     </ul>
                   </motion.div>
-                ))}
-              </div>
+                </div>
+              ))}
             </div>
           </motion.div>
         </motion.div>
