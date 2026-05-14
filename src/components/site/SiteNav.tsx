@@ -3,10 +3,11 @@ import { Link } from "@tanstack/react-router";
 import { motion, AnimatePresence } from "framer-motion";
 import logo from "@/assets/max/logo.png";
 import { TestModal } from "./TestModal";
+import { ProductModal, AMPLIFICATORI_MODAL } from "./ProductModal";
 
 const links = [
   { href: "#about", label: "Chi Siamo" },
-  { href: "#products", label: "Prodotti" },
+  { href: "#products", label: "Prodotti", dropdown: true },
   { href: "#pricing", label: "Prezzi" },
   { href: "#partner", label: "Diventa Partner" },
   { href: "#contact", label: "Contatti" },
