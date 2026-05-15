@@ -1,0 +1,12 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/client",
+  "serverlessFunctionRegion": "fra1",
+  "functions": {
+    "src/server.ts": {
+      "runtime": "nodejs22.x",
+      "memory": 512,
+      "maxDuration": 60
+    }
+  }
+}
