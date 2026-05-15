@@ -22,7 +22,7 @@ export const AMPLIFICATORI_PRODUCTS: ModalProduct[] = [
     ce: "CE 0051",
     poster: cic,
     video:
-      "https://dl.dropboxusercontent.com/scl/fi/m3pp5mnm593uddjmunbau/Maxoto-AI-Sense.mp4?rlkey=e5kifif7yqn46abrps1triu7t&raw=1",
+      "https://dl.dropboxusercontent.com/scl/fi/c6djfqjtngbnn37418vrd/Amplimaxoto-cic.mp4?rlkey=nfk2e8nw6t7vymm807o1a3kmz&raw=1",
     points: [
       "Tecnologia digitale avanzata",
       "Garanzia 2 anni inclusa",
