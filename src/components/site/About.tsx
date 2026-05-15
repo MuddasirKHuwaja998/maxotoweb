@@ -26,7 +26,7 @@ export function About() {
         >
           <div className="eyebrow mb-8">Chi Siamo</div>
           <h2 className="display-md">
-            <span className="block">Otocostruzioni</span>
+            <span className="block">M.A.X.OTO Otocostruzioni</span>
             <em className="block">Made in Italy</em>
           </h2>
           <p className="lead mt-8">
