@@ -123,17 +123,32 @@ export function SiteNav() {
             className="fixed inset-0 z-40 bg-ink/95 backdrop-blur-2xl lg:hidden flex flex-col items-center justify-center gap-7 px-6"
           >
             {links.map((l, i) => (
-              <motion.a
-                key={l.href}
-                href={l.href}
-                onClick={() => setOpen(false)}
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.1 + i * 0.07, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-                className="font-serif text-3xl sm:text-4xl text-white hover:text-gold transition-colors text-center"
-              >
-                {l.label}
-              </motion.a>
+              <div key={l.href} className="flex flex-col items-center gap-3">
+                <motion.a
+                  href={l.href}
+                  onClick={() => setOpen(false)}
+                  initial={{ y: 30, opacity: 0 }}
+                  animate={{ y: 0, opacity: 1 }}
+                  transition={{ delay: 0.1 + i * 0.07, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                  className="font-serif text-3xl sm:text-4xl text-white hover:text-gold transition-colors text-center"
+                >
+                  {l.label}
+                </motion.a>
+                {l.dropdown && (
+                  <motion.button
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    transition={{ delay: 0.18 + i * 0.07, duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
+                    onClick={() => {
+                      setOpen(false);
+                      setProductModalOpen(true);
+                    }}
+                    className="px-5 py-2 rounded-full border border-gold/40 bg-gradient-to-r from-gold-deep/20 to-gold/20 text-gold text-sm tracking-[0.2em] uppercase hover:from-gold-deep hover:to-gold hover:text-white transition-all"
+                  >
+                    Apparecchi Acustici
+                  </motion.button>
+                )}
+              </div>
             ))}
             
             <motion.button
